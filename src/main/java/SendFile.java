@@ -11,5 +11,6 @@ public class SendFile {
         if (file.isDirectory()) System.out.println("Dir");
         else if (file.isFile()) System.out.println("File");
         else System.out.println("Error!");
+
     }
 } 

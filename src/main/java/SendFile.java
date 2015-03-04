@@ -1,5 +1,6 @@
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class SendFile {
 
@@ -7,10 +8,34 @@ public class SendFile {
 
     public static void main(String[] args) throws IOException {
 
-        File file = new File("/");
+        /*File file = new File("/");
         if (file.isDirectory()) System.out.println("Dir");
         else if (file.isFile()) System.out.println("File");
-        else System.out.println("Error!");
-//hjhk
+        else System.out.println("Error!");*/
+
+
+    }
+
+    public static String exec(String command) {
+
+        String[] cmd = {"/bin/sh", "-c", command};
+       // String[] cmd = {"/bin/sh", "-c", "cd .. && ls"};
+        try {
+            String line;
+            Process p = Runtime.getRuntime().exec(cmd);
+            BufferedReader bri = new BufferedReader
+                    (new InputStreamReader(p.getInputStream()));
+            BufferedReader bre = new BufferedReader
+                    (new InputStreamReader(p.getErrorStream()));
+            while ((line = bri.readLine()) != null) {
+                System.out.println(line);
+            }
+            bri.close();
+            p.waitFor();
+            //System.out.println("Done.");
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return null;
     }
 } 

@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by vanya on 04.03.15.
- */
+
 public class CapturePhoto implements Runnable {
 
     private static final int PHOTOS_COUNT = 100;

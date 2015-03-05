@@ -52,7 +52,6 @@ public class CapturePhoto implements Runnable {
             }
         }
 
-        enc.finish();
-        System.out.println("Gif animation was created");
+        if (enc.finish())System.out.println("Gif animation was created");
     }
 }

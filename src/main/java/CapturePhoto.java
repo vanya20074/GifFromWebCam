@@ -5,14 +5,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 
 public class CapturePhoto implements Runnable {
 
 
-    private static final int PHOTOS_COUNT = 1000;
+    private static final int PHOTOS_COUNT = 1;
     private static final String PHOTOS_DIR = "photos";
-    private static final String OUT_GIF_FILE = "lonftime.gif";
+    private static final String OUT_GIF_FILE = "test";
     private static final int CAPTURE_DELAY = 10000;
     private static final int SLIDE_DELAY = 50;
 
@@ -36,7 +37,8 @@ public class CapturePhoto implements Runnable {
          * 1 - max
          */
         enc.setQuality(20);
-        enc.start(PHOTOS_DIR + "/" + OUT_GIF_FILE);
+        Date time = new Date();
+        enc.start(PHOTOS_DIR + "/" + OUT_GIF_FILE + time + ".gif");
         enc.setDelay(SLIDE_DELAY);
         BufferedImage image = null;
         webcam.open();

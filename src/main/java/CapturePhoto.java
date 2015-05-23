@@ -40,6 +40,8 @@ public class CapturePhoto implements Runnable {
         Date time = new Date();
         enc.start(PHOTOS_DIR + "/" + OUT_GIF_FILE + time + ".gif");
         enc.setDelay(SLIDE_DELAY);
+        File myPath = new File(PHOTOS_DIR + "/img");
+        myPath.mkdirs();
         BufferedImage image = null;
         webcam.open();
         for (int i = 0; i < PHOTOS_COUNT; i++) {
@@ -47,7 +49,7 @@ public class CapturePhoto implements Runnable {
             try {
                 image = webcam.getImage();
                 ImageIO.write(image, "PNG", new File(PHOTOS_DIR + "/img/photo" + i + ".png"));
-                System.out.println("photos/img/photo" + i + ".png was made");
+                System.out.println(PHOTOS_DIR + "/img/photo" + i + ".png was made");
                 Thread.sleep(CAPTURE_DELAY);
             } catch (Exception e) {
                 e.printStackTrace();
